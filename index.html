@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Poetry</title>
+  <style>
+     body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #ecf9a2;
+    }
+    .container {
+        max-width: 800px;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: #f9a144;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    h1, h2 {
+      text-align: center;
+      color: #333;
+    }
+    button {
+      display: block;
+      margin: 20px auto;
+      padding: 10px 20px;
+      font-size: 18px;
+      background-color: #f9f7f5;
+      color: #1b0101;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    button:hover {
+      background-color: #f55858;
+    }
+    .poem-list {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+    }
+    .poem-item {
+      margin-bottom: 10px;
+      background-color: #f2f2f2;
+      padding: 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .poem-item:hover {
+      background-color: #e2e2e2;
+    }
+    .poem-title {
+      font-size: 18px;
+      color: #333;
+      margin: 0;
+    }
+    .poem-content {
+      display: none;
+      margin-top: 10px;
+      padding: 10px;
+      background-color: #f9f9f9;
+      border-radius: 5px;
+    }
+    /* .poem-list {
+      list-style-type: none;
+      padding: 0;
+    }
+    .poem-list li {
+      margin-bottom: 10px;
+      background-color: #fff;
+      padding: 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .poem-list li:hover {
+      background-color: #f0f0f0;
+    }
+    .poem-title {
+      font-size: 18px;
+      color: #333;
+      margin: 0;
+    }
+    .poem-content {
+      display: none;
+      margin-top: 10px;
+    } */
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Welcome</h1>
+    <button id="welcomeButton">Click Me</button>
+    <div id="poemList" style="display:none;">
+      <h2>Poems</h2>
+      <ul class="poem-list">
+        <li class="poem-item" data-poem="poem1">First</li>
+        <li class="poem-item" data-poem="poem2">Special One</li>
+        <li class="poem-item" data-poem="poem3">Heartbreak💔</li>
+        <li class="poem-item" data-poem="poem4">K🪐</li>
+        <li class="poem-item" data-poem="poem5">27th December</li>
+        <li class="poem-item" data-poem="poem6">25th January</li>
+        <li class="poem-item" data-poem="poem7">Plead💔</li>
+        <li class="poem-item" data-poem="poem8">Life Lately</li>
+        <li class="poem-item" data-poem="poem9">Dont Give Up</li>
+        <li class="poem-item" data-poem="poem10">ADIEU💕</li>
+        <!-- Add more poems as needed -->
+      </ul>
+    </div>
+    <div id="poemContainer" style="display:none;">
+      <h2 id="poemTitle"></h2>
+      <div id="poemContent"></div>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('welcomeButton').addEventListener('click', function() {
+      document.getElementById('welcomeButton').style.display = 'none';
+      document.getElementById('poemList').style.display = 'block';
+    });
+
+    const poems = {
+      poem1: {
+        title: 'First',
+        content: `Finally the day has come when I want to tell you something, 
+It's for you and else for nothing. 
+My heart sank that day, 
+Still remember those sleepless nights, thinking of you which one could never pay. 
+Listening ill about you was unbearable for me to stay quiet, 
+But my heart didn't let me do that. 
+Can't forget that confession thing,when you cried and cried and cried, 
+Hearing that from you, I felt like stabbing those glassy-eyed. 
+I felt shy talking to you, 
+But collected some courage to talk to you. , 
+Hearing your voice the first time, 
+Made me like a star that shines. 
+Talking to you became a necessity, 
+I preferred to talk to you with all .....ty. 
+Don't know why I cried in your pain, 
+It was like beating up with a cane. 
+Everyone teased me by your name, 
+I was to give them a box on their frame. 
+I loved you from my whole heart, 
+You just hit my heart with a dart!! 
+I promise I would never betray you
+I want you to sue me if I did it to you
+I don't have the flair of writing poems, 
+But to tell you about my feelings I compose!!!`
+      },
+      poem2: {
+        title: 'Special One',
+        content: `You are special in every way,❤️
+Supporting me more and more and more each passing day.
+You are the reason I'm so strong 💪
+With you at the helm not a thing could go wrong.✅
+You've helped me through many trials, 
+You've made things better in every situation.👆
+Thank you for always being there,👏
+And showing me that you truly care. 
+Words could never explain how I feel about you,
+But I hope you know that I truly appreciate you!❤️`
+      },
+      poem3: {
+        title: 'Heartbreak💔',
+        content: `Lost in time, a year has passed,
+Yet memories linger, a love that was vast.
+The pain's still fresh, like needles in my heart,
+Living without you, a soul torn apart.
+
+Never did I fathom a life without your touch,
+Every second a struggle, hope's lost as such.
+No love compared to the one I had for you,
+Overwhelming, consuming, a love so true.
+
+Each day, thoughts of you refuse to cease,
+Sleep eludes me, memories bring no peace.
+Happy for what was, yet weep for what's gone,
+Yearning for eternity, a love that shone.
+
+No other can capture my heart in that way,
+A depth of emotion, words fail to convey.
+I was not myself, merged with your soul,
+Now left in fragments, an incomplete whole.
+
+I'm tangled within, a mess deep within me,
+Smiling outside, while inside I can't be free.
+Building walls to guard, to prevent the pain,
+But lost in confusion, not knowing what remains.
+
+Help me unravel this maze in my mind,
+To heal the wounds, a solace to find.`
+      },
+      poem4: {
+        title: 'K🪐',
+        content: `In June's embrace, a match did bloom,
+On Bumble's screen, in a sunny room,
+A girl, I thought, perhaps quite dumb,
+Yet, in our talks, two souls did resonate.
+
+We shared our pain, our broken lives,
+As if fate's mirrored, our souls in ties,
+Talking to you, I felt alive,
+A connection rare, no disguise.
+
+Then came a break, a fleeting end,
+But destiny, it chose to mend,
+As college gates, they did extend,
+Our bond reborn, like an angel, a friend.
+
+Through trials and tears, I found my way,
+Guided by words, I'd often say,
+Though some may call you brainless, they,
+Fail to see the light, our bonds light the way.
+
+My pain, my sadness, did decrease,
+With every word, I found some peace,
+Though I'm but a virtual release,
+You were there to help, to bring surcease.
+
+So here's a short and heartfelt note,
+A thank you gift, for time I wrote,
+Forever in debt, I'll devote,
+For the hope and strength, I helped promote.
+
+Keep on smiling, never change,
+In life's vast sea, a constant range,
+We'll hope to meet, a promise exchange,
+In the future bright, new horizons exchange.`
+      },
+      poem5: {
+        title: '27th December',
+        content: `Through challenges and trials, we've found our way,
+Meeting at last, brighter than the day.
+To Jaipur we journey, our bond so true,
+Grateful for moments, just me and you.
+
+A gem in my life, you shine so bright,
+At my lowest point, you were my light.
+Your stubborn ways, I've come to adore,
+It's part of you, couldn't ask for more.
+
+You're vital to me, like air, like dew, 
+With each passing day, my feelings grew.
+I can see you're blushing while reading this don't blush, 
+In our journey together, a bond so plush.
+
+For the words I've spoken, in anger and haste, 
+I'm truly sorry, let's forget the distaste. 
+At my lowest point, you were my guide, 
+With you by my side, I never felt denied.
+
+
+Though storms may come, our bond won't sway, 
+In 2023, you made my best days. 
+Ending the year, with memories so clear,
+Thank you,K, for always being near.`
+      },
+      poem6: {
+        title: '25th January',
+        content: `On the twenty-fifth of January, a fleeting share,
+Eight hours dancing, time so rare.
+From pickup to drop-off, seamless transition, 
+Lost in moments, a beautiful rendition.
+
+Those precious hours, a treasure untold, 
+A smile ignited in memories, unfold.
+Amidst joy, a shield against what's to come, 
+Comforting presence, a steady drum.
+
+Biryani shared, gifts exchanged, town explored,
+Burgers savored, every memory stored.
+In the car's embrace, where time would sway, 
+A grateful thank you, for brightening my day.
+
+Happiness sown, facing difficulties with glee, 
+Your presence, guiding me. 
+With gratitude profound, I extend my view, 
+For the gift you gave, and all that it drew. `
+      },
+      poem7: {
+        title: 'Plead💔',
+        content: `In the depths of life's relentless strife,
+I longed for you, my guiding light,
+To share my woes, my inner plight,
+But you were distant, out of sight.
+
+Frustration, anger, stress did brew,
+Within my heart, a storm grew,
+I yearned for solace, a friend so true,
+But your indifference, it cut me through.
+
+I painted smiles, a facade to wear,
+While inside, I crumbled in despair,
+Alone I stood, in this world unfair,
+Betrayed by those I thought would care.
+
+Yet I'll endure, I'll stand and fight,
+Through the darkest days and endless nights,
+For in my heart, there burns a light,
+To find my peace and make it right.`
+      },
+      poem8: {
+        title: 'Life Lately',
+        content: `Life's a heavy burden, on the edge I stand,
+With a weary heart and troubled mind, unplanned.
+The stress, weight, my brain in the endless plight,
+I hide my feelings, shrouded in the night.
+
+Tension brews, like storm clouds overhead,
+Negative thoughts, they fill my soul with dread.
+I ponder failure, where would I then reside,
+Disappointing hopes, I cannot let them slide.
+
+Yearning for time to swiftly pass on by,
+This heavy toll, a heavy-hearted sigh.
+But deep within, a glimmer of the light,
+Through these trials, I'll find my strength to fight.
+
+In life's tough grip, I'll hold on to my dreams,
+With faith and hope, I'll mend my broken seams.
+Through the darkest hours, I'll learn to heal,
+For in this journey, my heart will seal its zeal.`
+      },
+      poem9: {
+        title: 'Dont Give Up',
+        content: `In the depths of the ocean, I struggle for air,
+Burdened by secrets I cannot bear.
+For years, I've carried this weight inside,
+Longing to share, but fear has me tied.
+
+I've always been honest, my words plain and true,
+Yet darkness surrounds me, a relentless hue.
+I question my fate, the reasons unknown,
+Why must I suffer while others are shown?
+
+The person I desire to confide in, you see,
+Is the very same one who bestowed upon me
+These feelings and thoughts that consume my soul,
+Leaving me gasping, struggling for control.
+
+I yearn to release the words I've suppressed,
+To reveal the pain that's left me distressed.
+But how do I find the courage to confess,
+When did the source of my anguish caused this mess?
+
+Oh, sleep eludes me, haunted by the night,
+Nightmares and memories, an endless fight.
+Happiness fades, as thoughts of her persist,
+A constant reminder of love I resist.
+
+In this tumultuous life, the path's unclear,
+I search for solace, for answers to appear.
+Though the wicked may prosper, good deeds undone,
+I'll hold onto hope, for a new day to come.
+
+So I'll face my demons, confront my despair,
+Find strength in my clarity, my spirit laid bare.
+Within these verses, a release I find,
+A poem to capture the echoes of my mind.`
+      },
+      poem10: {
+        title: 'ADIEU💕',
+        content: `In the realm of dreams, where fantasies bloom,
+I met a soul that chased away the gloom.
+In days of old, our friendship grew,
+A radiant bond, tried and true.
+
+Each moment shared, a cherished delight,
+Bathing in joy, basking in light.
+But life, a fickle hand, it dealt its blow,
+Turning joy to sorrow, a bitter undertow.
+
+Lemons aplenty, life did bestow,
+Shattering dreams, casting shadows low.
+Once close, now distant, like a fleeting breeze,
+A stranger in guise, a friend's unease.
+
+The closeness shared began to fade,
+As distance grew, like a lingering shade.
+Once familiar gestures turned estranged,
+Leaving me bewildered, feelings rearranged.
+
+Missed are the calls, the video's glow,
+Longing for moments, lost in the flow.
+My smile, once radiant, now faded and worn,
+Leaving me behind, tattered and torn.
+
+Rather than lingering in shadows of gloom,
+Let's depart, leaving no room.
+In the treasury of friendship, preserved,
+The moments of joy, the memories deserved.
+
+In the divine plan, if our destinies align,
+No earthly force could sever our twine.
+Longing for your presence, in every rhyme,
+For you're the one I crave, throughout time.
+
+Farewell, Jupiter, on paths anew,
+May happiness follow, in all that you do.
+Thank you for the joy, the light you brought,
+In my heart, your memory will never be forgot.`
+      }
+      // Add more poems as needed
+    };
+
+    const poemItems = document.querySelectorAll('.poem-item');
+    poemItems.forEach(function(item) {
+      item.addEventListener('click', function() {
+        const poemId = this.getAttribute('data-poem');
+        document.getElementById('poemTitle').innerText = poems[poemId].title;
+        document.getElementById('poemContent').innerText = poems[poemId].content;
+        document.getElementById('poemContainer').style.display = 'block';
+      });
+    });
+  </script>
+</body>
+</html>
